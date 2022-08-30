@@ -16,6 +16,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column]
+    private ?string $lastName = null;
+
+    #[ORM\Column]
+    private ?string $firstName = null;
+
+    #[ORM\Column]
+    private ?string $nickName = null;
+
+    #[ORM\Column]
+    private ?string $profilePicture = null;
+
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
@@ -31,6 +43,70 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string|null $lastName
+     */
+    public function setLastName(?string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getFirstName(): ?int
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param int|null $firstName
+     */
+    public function setFirstName(?int $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNickName(): ?int
+    {
+        return $this->nickName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getProfilePicture(): ?string
+    {
+        return $this->profilePicture;
+    }
+
+    /**
+     * @param string|null $profilePicture
+     */
+    public function setProfilePicture(?string $profilePicture): void
+    {
+        $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * @param int|null $nickName
+     */
+    public function setNickName(?int $nickName): void
+    {
+        $this->nickName = $nickName;
     }
 
     public function getEmail(): ?string

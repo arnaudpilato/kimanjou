@@ -6,9 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class KimanjouController extends AbstractController
+class KifekoiController extends AbstractController
 {
-    #[Route('/kimanjou', name: 'app_kimanjou')]
+    #[Route('/kifekoi', name: 'app_kifekoi')]
     public function index(): Response
     {
         setlocale(LC_TIME, "fr_FR", "French");
@@ -16,9 +16,8 @@ class KimanjouController extends AbstractController
         for ($i = 0; $i < 7; $i++) {
             $week[$i] = date('l - d/m/Y', strtotime("this week + " . $i . " day"));
         }
-
-        return $this->render('kimanjou/index.html.twig', [
-            'controller_name' => 'KimanjouController',
+        return $this->render('kifekoi/index.html.twig', [
+            'controller_name' => 'KifekoiController',
             'week' => $week
         ]);
     }

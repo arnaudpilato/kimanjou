@@ -3,17 +3,34 @@
 {% block title %}Kimanjou{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1 class="text-center my-4">Kimanjou</h1>
+    <div class="container">
+        <h1 class="text-center my-4">Kimanjou</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            {% for day in week %}
-                <th>{{ day }}</th>
-            {% endfor %}
-        </tr>
-        </thead>
-    </table>
-</div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center align-middle">Utilisateur</th>
+                    {% for day in week %}
+                        <th class="text-center">{{ day }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <th class="text-end align-middle">{{ user.lastName }}</th>
+                        {% for day in week %}
+                            <td>
+                                <select class="form-select">
+                                    {% for location in locations %}
+                                        <option>{{ location.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

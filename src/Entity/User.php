@@ -64,7 +64,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return int|null
      */
-    public function getFirstName(): ?int
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
@@ -72,7 +72,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param int|null $firstName
      */
-    public function setFirstName(?int $firstName): void
+    public function setFirstName(?string $firstName): void
     {
         $this->firstName = $firstName;
     }
@@ -80,7 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return int|null
      */
-    public function getNickName(): ?int
+    public function getNickName(): ?string
     {
         return $this->nickName;
     }

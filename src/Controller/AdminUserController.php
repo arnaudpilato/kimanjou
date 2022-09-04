@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class KifekoiController extends AbstractController
+class AdminUserController extends AbstractController
 {
-    #[Route('/kifekoi', name: 'app_kifekoi')]
+    #[Route('/admin/user', name: 'app_admin_user')]
     public function index(): Response
     {
-        return $this->render('kifekoi/index.html.twig', [
-            'controller_name' => 'KifekoiController',
+        return $this->render('admin_user/index.html.twig', [
+            'controller_name' => 'AdminUserController',
         ]);
     }
 }

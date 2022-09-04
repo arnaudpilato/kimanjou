@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Security;
 
 class KimanjouController extends AbstractController
 {
-    #[Route('/kimanjou', name: 'app_kimanjou')]
+    #[Route('/', name: 'app_kimanjou')]
     public function index(UserRepository $userRepository, LocationRepository $locationRepository, Security $security): Response
     {
         setlocale(LC_TIME, "fr_FR", "French");

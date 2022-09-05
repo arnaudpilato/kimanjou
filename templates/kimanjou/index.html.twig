@@ -21,11 +21,15 @@
                         <th class="text-end align-middle">{{ user.lastName }}</th>
                         {% for day in week %}
                             <td>
-                                <select class="form-select">
-                                    {% for location in locations %}
-                                        <option>{{ location.name }}</option>
-                                    {% endfor %}
-                                </select>
+                                {% if userEssai.id == user.id %}
+                                    <select class="form-select">
+                                        {% for location in locations %}
+                                            <option>{{ location.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                {% else %}
+                                    {{ user.nickName }}
+                                {% endif %}
                             </td>
                         {% endfor %}
                     </tr>

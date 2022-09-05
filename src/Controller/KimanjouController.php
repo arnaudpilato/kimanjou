@@ -25,7 +25,7 @@ class KimanjouController extends AbstractController
             'week' => $week,
             'users' => $userRepository->findAll(),
             'locations' => $locationRepository->findAll(),
-            'user' => $security->getUser()
+            'userEssai' => $security->getUser()
         ]);
     }
 }

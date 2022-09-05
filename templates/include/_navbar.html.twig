@@ -13,11 +13,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_kifekoi') }}">Kifékoi</a>
                     </li>
+                    {% if  is_granted("ROLE_COACH") %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_admin_home') }}">Administration</a></li>
+                    {% endif %}
                     {% if app.user %}
-                        {{ app.user.email }}
-                        <li><a class="nav-link" href="{{ path('app_logout') }}"> Se déconnecter</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                        </li>
+                        <li>{{ app.user.email }}</li>
                     {% else %}
-                        <li><a class="nav-link" href="{{ path('app_login') }}"> Se connecter</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                        </li>
                     {% endif %}
                 </ul>
             </div>

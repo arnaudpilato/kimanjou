@@ -28,6 +28,9 @@ class Location
     #[ORM\Column]
     private ?string $city = null;
 
+    #[ORM\OneToMany(targetEntity: History::class, mappedBy: 'location')]
+    private $history;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -111,5 +114,21 @@ class Location
     public function setCity(?string $city): void
     {
         $this->city = $city;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHistory()
+    {
+        return $this->history;
+    }
+
+    /**
+     * @param mixed $history
+     */
+    public function setHistory($history): void
+    {
+        $this->history = $history;
     }
 }

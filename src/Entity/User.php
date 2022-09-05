@@ -42,6 +42,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\OneToMany(targetEntity: History::class, mappedBy: 'user')]
+    private $history;
+
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
@@ -83,7 +86,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
     public function getNickName(): ?string
     {
@@ -107,9 +110,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @param int|null $nickName
+     * @param string|null $nickName
      */
-    public function setNickName(?int $nickName): void
+    public function setNickName(?string $nickName): void
     {
         $this->nickName = $nickName;
     }
@@ -189,5 +192,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHistory()
+    {
+        return $this->history;
+    }
+
+    /**
+     * @param mixed $history
+     */
+    public function setHistory($history): void
+    {
+        $this->history = $history;
     }
 }

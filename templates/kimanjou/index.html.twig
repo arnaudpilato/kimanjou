@@ -21,7 +21,7 @@
                         <th class="text-end align-middle">{{ user.lastName }}</th>
                         {% for day in week %}
                             <td>
-                                {% if userEssai.id == user.id %}
+                                {% if app.user and userEssai.id == user.id %}
                                     <select class="form-select">
                                         {% for location in locations %}
                                             <option>{{ location.name }}</option>

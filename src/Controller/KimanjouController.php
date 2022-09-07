@@ -15,9 +15,10 @@ class KimanjouController extends AbstractController
     public function index(UserRepository $userRepository, LocationRepository $locationRepository, Security $security): Response
     {
         setlocale(LC_TIME, "fr_FR", "French");
+        $days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
         $week = [];
         for ($i = 0; $i < 7; $i++) {
-            $week[$i] = date('l d/m/Y', strtotime("this week + " . $i . " day"));
+            $week[$i] = date('d/m/Y', strtotime("this week + " . $i . " day"));
         }
 
         return $this->render('kimanjou/index.html.twig', [
@@ -25,7 +26,8 @@ class KimanjouController extends AbstractController
             'week' => $week,
             'users' => $userRepository->findAll(),
             'locations' => $locationRepository->findAll(),
-            'userEssai' => $security->getUser()
+            'userEssai' => $security->getUser(),
+            'days' => $days
         ]);
     }
 }

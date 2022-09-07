@@ -18,16 +18,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $lastName = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $firstName = null;
 
     #[ORM\Column]
     private ?string $nickName = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $profilePicture = null;
 
     #[ORM\Column(length: 180, unique: true)]

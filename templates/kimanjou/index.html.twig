@@ -4,25 +4,32 @@
 
 {% block body %}
     <div class="container">
-        <h1 class="text-center my-4">Kimanjou</h1>
+        <h1 class="text-center my-5">Kimanjou</h1>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th class="text-center align-middle">Utilisateur</th>
-                    {% for day in week %}
-                        <th class="text-center">{{ day }}</th>
+                    <th class="text-center align-middle"></th>
+                    {% for key, day in week %}
+                        <th class="text-center">
+                            <div>{{ days[key] }}</div>
+                            <div>{{ day }}</div>
+                        </th>
                     {% endfor %}
                 </tr>
             </thead>
             <tbody>
                 {% for user in users %}
                     <tr>
-                        <th class="text-end align-middle">{{ user.lastName }}</th>
+                        <th class="align-middle d-flex">
+                            <div><img src="{{ asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image de profil"></div>
+                            <div class="align-self-center">{{ user.nickName }}</div>
+                        </th>
                         {% for day in week %}
-                            <td>
+                            <td class="align-middle">
                                 {% if app.user and userEssai.id == user.id %}
                                     <select class="form-select">
+                                        <option></option>
                                         {% for location in locations %}
                                             <option>{{ location.name }}</option>
                                         {% endfor %}

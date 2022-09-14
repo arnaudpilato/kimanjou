@@ -34,7 +34,7 @@ class AdminLocationController extends AbstractController
         }
 
         return $this->renderForm('admin_location/edit.html.twig', [
-            'user' => $location,
+            'location' => $location,
             'locationForm' => $form,
         ]);
     }

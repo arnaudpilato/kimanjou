@@ -23,12 +23,12 @@
             <tbody>
                 {% for key, location in locations %}
                     <tr>
-                        <th onclick="window.location='{{ path('app_admin_location_edit', {'id': user.id}) }}'">{{ key + 1 }}</th>
-                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': user.id}) }}'">{{ location.name }}</td>
-                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': user.id}) }}'">{{ location.address }}</td>
-                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': user.id}) }}'">{{ location.postCode }}</td>
-                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': user.id}) }}'">{{ location.city }}</td>
-                        <td><a href="#">Supprimer</a></td>
+                        <th onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ key + 1 }}</th>
+                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ location.name }}</td>
+                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ location.address }}</td>
+                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ location.postCode }}</td>
+                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ location.city }}</td>
+                        <td>{{ include('admin_location/_delete_form.html.twig') }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -2,6 +2,8 @@
 
 {% block title %}Gestion des utilisateurs{% endblock %}
 
+{% block stylesheets %}{{ encore_entry_link_tags('admin') }}{% endblock %}
+
 {% block body %}
 <div class="container">
     <h1 class="text-center my-4">Gestion des utilisateurs</h1>
@@ -14,21 +16,22 @@
                 <th>#</th>
                 <th>Nom</th>
                 <th>Prénom</th>
+                <th>Surnom</th>
                 <th>Email</th>
                 <th>Role</th>
-                <th colspan="2">Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             {% for key, user in users %}
                 <tr>
-                    <th>{{ key + 1 }}</th>
-                    <td>{{ user.lastName }}</td>
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.roles[0] == 'ROLE_USER' ? 'Utilisateur' : 'Administrateur' }}</td>
-                    <td><a href="#">Modifier</a></td>
-                    <td><a href="#">Supprimer</a></td>
+                    <th onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'">{{ key + 1 }}</th>
+                    <td onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'">{{ user.lastName }}</td>
+                    <td onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'">{{ user.firstName }}</td>
+                    <td onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'">{{ user.nickName }}</td>
+                    <td onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'">{{ user.email }}</td>
+                    <td onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'">{{ user.roles[0] == 'ROLE_USER' ? 'Utilisateur' : 'Administrateur' }}</td>
+                    <td>{{ include('admin_user/_delete_form.html.twig') }}</td>
                 </tr>
             {% endfor %}
         </tbody>

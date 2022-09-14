@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Profile de {{ user.nickName }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center my-5">Profil de {{ user.nickName }}</h1>
+        <div class="text-end my-3">
+            <a class="btn btn-danger" href="{{ path('app_profile_edit', {'id': app.user.id}) }}">Modifier</a>
+        </div>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ user.lastName }}</td>
+                </tr>
+                <tr>
+                    <th>Prénom</th>
+                    <td>{{ user.firstName }}</td>
+                </tr>
+                <tr>
+                    <th>Identifiant</th>
+                    <td>{{ user.nickName }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

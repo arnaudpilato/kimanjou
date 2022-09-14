@@ -17,18 +17,17 @@
                     <th>Adresse</th>
                     <th>Code Postal</th>
                     <th>Ville</th>
-                    <th colspan="2">Actions</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 {% for key, location in locations %}
                     <tr>
-                        <th>{{ key + 1 }}</th>
-                        <td>{{ location.name }}</td>
-                        <td>{{ location.address }}</td>
-                        <td>{{ location.postCode }}</td>
-                        <td>{{ location.city }}</td>
-                        <td><a href="#">Modifier</a></td>
+                        <th onclick="window.location='{{ path('app_admin_location_edit', {'id': user.id}) }}'">{{ key + 1 }}</th>
+                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': user.id}) }}'">{{ location.name }}</td>
+                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': user.id}) }}'">{{ location.address }}</td>
+                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': user.id}) }}'">{{ location.postCode }}</td>
+                        <td onclick="window.location='{{ path('app_admin_location_edit', {'id': user.id}) }}'">{{ location.city }}</td>
                         <td><a href="#">Supprimer</a></td>
                     </tr>
                 {% endfor %}

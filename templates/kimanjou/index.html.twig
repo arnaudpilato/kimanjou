@@ -5,7 +5,6 @@
 {% block body %}
     <div class="container">
         <h1 class="text-center my-5">Kimanjou</h1>
-
         <table class="table">
             <thead>
                 <tr>
@@ -13,34 +12,28 @@
                     {% for key, day in week %}
                         <th class="text-center">
                             <div>{{ days[key] }}</div>
-                            <div>{{ day }}</div>
+                            <div>{{ day|date("d/m/Y") }}</div>
                         </th>
                     {% endfor %}
                 </tr>
             </thead>
             <tbody>
-                {% for user in users %}
+                {% for it, user in users %}
                     <tr>
                         <th class="align-middle d-flex">
-                            <div><img src="{{ user.profilePicture != '' ?
+                            <div>
+                                <img src="{{ user.profilePicture != '' ?
                                 asset('uploads/profile_pictures/' ~ user.profilePicture) :
                                 asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image de profil">
                             </div>
                             <div class="align-self-center">{{ user.nickName }}</div>
                         </th>
-                        {% for day in week %}
-                            <td class="align-middle">
-                                {% if app.user and userEssai.id == user.id %}
-                                    <select class="form-select">
-                                        <option></option>
-                                        {% for location in locations %}
-                                            <option>{{ location.name }}</option>
-                                        {% endfor %}
-                                    </select>
-                                {% else %}
-                                    {{ user.nickName }}
-                                {% endif %}
-                            </td>
+                        {% for history in histories %}
+                            {% if (history[it]) %}
+                                <td>{{ history[it].location.name }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
                         {% endfor %}
                     </tr>
                 {% endfor %}

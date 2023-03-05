@@ -10,7 +10,7 @@
             <div class="col-5">
                 <h1 class="text-center my-5">Modification de {{ user.nickName }}</h1>
                 <div class="text-end my-3">
-                    <a class="btn btn-danger" href="{{ path('app_profile_show', {'id': app.user.id}) }}">Retour</a>
+                    <a class="btn btn-danger" href="{{ path('app_profile', {'id': app.user.id}) }}">Retour</a>
                 </div>
                 {{ include('profile/_form.html.twig', {'button_label': 'Update'}) }}
             </div>

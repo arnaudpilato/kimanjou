@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+
+{% form_theme kimanjouForm 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Kimanjou{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center my-5">Kimanjou</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center align-middle"></th>
+                    {% for key, day in week %}
+                        <th class="text-center">
+                            <div>{{ days[key] }}</div>
+
+                            <div>{{ day|date("d/m/Y") }}</div>
+                        </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+            {{ form_start(kimanjouForm) }}
+            {% for it, user in users %}
+                <tr>
+                    <th {{ (user.id == app.user.id) ? 'class="align-middle d-flex margin-bottom-form"' : 'class="align-middle d-flex"' }}>
+                        <div>
+                            <img src="{{ user.profilePicture != '' ?
+                            asset('uploads/profile_pictures/' ~ user.profilePicture) :
+                            asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image de profil">
+                        </div>
+                        <div class="align-self-center">{{ user.nickName }}</div>
+                    </th>
+                    {% if (user.id == app.user.id) %}
+                        {% for key, day in week %}
+                            <td class="margin-bottom-form">
+                                {{ form_widget(kimanjouForm['jour' ~ (key + 1)]) }}
+                            </td>
+                        {% endfor %}
+                    {% else %}
+                        {% for history in histories %}
+                            {% if (history[it]) %}
+                                <td>{{ history[it].location.name }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center mt-5">
+            <button class="btn btn-secondary" type="submit">Modifier</button>
+        </div>{{ form_end(kimanjouForm) }}
+    </div>
+{% endblock %}

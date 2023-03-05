@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Location;
 use App\Form\LocationType;
 use App\Repository\LocationRepository;
+use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,12 +23,19 @@ class AdminLocationController extends AbstractController
     }
 
     #[Route('/admin/location/{id}/edit', name: 'app_admin_location_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Location $location, LocationRepository $locationRepository): Response
+    public function edit(Request $request, Location $location, LocationRepository $locationRepository, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(LocationType::class, $location);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $locationPictureFile = $form->get('locationPicture')->getData();
+
+            if ($locationPictureFile) {
+                $locationPictureFileName = $fileUploader->upload($locationPictureFile, 'location');
+                $location->setlocationPicture($locationPictureFileName);
+            }
+
             $locationRepository->add($location, true);
 
             return $this->redirectToRoute('app_admin_location', [], Response::HTTP_SEE_OTHER);
@@ -39,11 +47,17 @@ class AdminLocationController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/location/{id}', name: 'app_admin_location_delete', methods: ['POST'])]
+    #[Route('/admin/location/{id}/delete', name: 'app_admin_location_delete', methods: ['POST'])]
     public function delete(Request $request, Location $location, LocationRepository $locationRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$location->getId(), $request->request->get('_token'))) {
-            $locationRepository->remove($location, true);
+            if ($location->getId() != 1) {
+                $locationRepository->remove($location, true);
+            } else {
+                $this->addFlash('danger', 'Impossible de supprimer le choix de base');
+
+                return $this->redirectToRoute('app_admin_location', [], Response::HTTP_SEE_OTHER);
+            }
         }
 
         return $this->redirectToRoute('app_admin_location', [], Response::HTTP_SEE_OTHER);

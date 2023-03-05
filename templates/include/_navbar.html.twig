@@ -13,13 +13,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_kifekoi') }}">Kifékoi</a>
                     </li>
-                    {% if  is_granted("ROLE_USER") %}
+                    {% if  is_granted("ROLE_ADMIN") %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_admin_home') }}">Administration</a></li>
                     {% endif %}
                     {% if app.user %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_profile_show', {'id': app.user.id}) }}">Profil</a>
+                            <a class="nav-link" href="{{ path('app_profile', {'id': app.user.id}) }}">Profil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
@@ -28,7 +28,7 @@
                             <div><img src="{{ app.user.profilePicture != '' ?
                                 asset('uploads/profile_pictures/' ~ app.user.profilePicture) :
                                 asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image de profil"></div>
-                            <div>{{ app.user.nickName }}</div>
+                            <div class="align-self-center">{{ app.user.nickName }}</div>
                         </li>
                     {% else %}
                         <li class="nav-item">

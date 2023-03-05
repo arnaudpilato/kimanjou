@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     profile_pictures_directory: '%kernel.project_dir%/public/uploads/profile_pictures'
+    location_pictures_directory: '%kernel.project_dir%/public/uploads/location_pictures'
 
 services:
     # default configuration for services in *this* file
@@ -27,3 +28,5 @@ services:
     App\Service\FileUploader:
         arguments:
             $targetDirectory: '%profile_pictures_directory%'
+            $profile: '%profile_pictures_directory%'
+            $location: '%location_pictures_directory%'

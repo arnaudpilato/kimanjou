@@ -4,9 +4,9 @@ namespace App\Entity;
 
 use App\Repository\HistoryRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Date;
 
 #[ORM\Entity(repositoryClass: HistoryRepository::class)]
+#[ORM\Table(name: '`history`')]
 class History
 {
     #[ORM\Id]
@@ -21,7 +21,7 @@ class History
     private $location;
 
     #[ORM\Column]
-    private ?Date $date = null;
+    private ?\DateTime $date = null;
 
     /**
      * @return mixed
@@ -61,17 +61,17 @@ class History
     }
 
     /**
-     * @return Date|null
+     * @return \DateTime|null
      */
-    public function getDate(): ?Date
+    public function getDate(): ?\DateTime
     {
         return $this->date;
     }
 
     /**
-     * @param Date|null $date
+     * @param \DateTime|null $date
      */
-    public function setDate(?Date $date): void
+    public function setDate(?\DateTime $date): void
     {
         $this->date = $date;
     }

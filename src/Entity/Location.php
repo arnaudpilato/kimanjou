@@ -6,6 +6,7 @@ use App\Repository\LocationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LocationRepository::class)]
+#[ORM\Table(name: '`location`')]
 class Location
 {
     #[ORM\Id]
@@ -16,16 +17,16 @@ class Location
     #[ORM\Column]
     private ?string $name = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $locationPicture = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $address = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $postCode = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $city = null;
 
     #[ORM\OneToMany(targetEntity: History::class, mappedBy: 'location')]

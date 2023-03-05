@@ -46,8 +46,10 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
+        $user = $token->getUser();
+
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('app_kimanjou'));
+        return new RedirectResponse($this->urlGenerator->generate('app_kimanjou_edit', ['id' => $user->getId()]));
         // throw new \Exception($this->urlGenerator->generate());
     }
 

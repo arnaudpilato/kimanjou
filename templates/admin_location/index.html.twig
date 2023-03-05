@@ -8,11 +8,15 @@
         <div class="text-end my-3">
             <a class="btn btn-danger" href="{{ path('app_admin_home') }}">Retour</a>
         </div>
+        {% for flash_error in app.flashes('danger') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
 
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>Image</th>
                     <th>Nom</th>
                     <th>Adresse</th>
                     <th>Code Postal</th>
@@ -24,6 +28,10 @@
                 {% for key, location in locations %}
                     <tr>
                         <th onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ key + 1 }}</th>
+                        <th onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'"><div><img src="{{ location.locationPicture != '' ?
+                                asset('uploads/location_pictures/' ~ location.locationPicture) :
+                                asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image du lieu">
+                            </div></th>
                         <td onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ location.name }}</td>
                         <td onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ location.address }}</td>
                         <td onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ location.postCode }}</td>

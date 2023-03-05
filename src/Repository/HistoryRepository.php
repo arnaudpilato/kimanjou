@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\History;
+use App\Entity\User;
+use DateTimeInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -37,6 +39,19 @@ class HistoryRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findByDateAndUserId($from, $to)
+    {
+        return $this->createQueryBuilder('h')
+            ->andWhere('h.date BETWEEN :from AND :to')
+            ->setParameter('from', $from->format('Y-m-d') . ' 00:00:00')
+            ->setParameter('to', $to->format('Y-m-d') . ' 00:00:00')
+            ->orderBy('h.user', 'ASC')
+            ->addOrderBy('h.date', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
 //    /**

@@ -1,7 +1,7 @@
 {% block navBar %}
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ path('app_kimanjou') }}">Kimanjou</a>
+            <a class="navbar-brand mx-3" href="{{ path('app_kimanjou') }}">Kimanjou</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -15,9 +15,17 @@
                     </li>
                     {% if app.user %}
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_profile', {'id': app.user.id}) }}">Profil</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
                         </li>
-                        <li>{{ app.user.email }}</li>
+                        <li class="align-self-center mx-4 d-flex">
+                            <div><img src="{{ app.user.profilePicture != '' ?
+                                asset('uploads/profile_pictures/' ~ app.user.profilePicture) :
+                                asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image de profil"></div>
+                            <div class="align-self-center">{{ app.user.nickName }}</div>
+                        </li>
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>

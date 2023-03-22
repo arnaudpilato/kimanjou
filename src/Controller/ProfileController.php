@@ -32,7 +32,7 @@ class ProfileController extends AbstractController
             if ($profilePictureFile) {
                 $nameFromEmail = explode( '@', $user->getEmail());
                 $originalFileName = pathinfo($nameFromEmail[0], PATHINFO_FILENAME);
-                $newFileName = $originalFileName.'.'.$profilePictureFile->guessExtension();
+                $newFileName = $originalFileName.'.profile.'.$profilePictureFile->guessExtension();
 
                 $profilePictureFile->move(
                     $this->getParameter('profile_pictures_directory'),

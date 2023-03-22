@@ -6,14 +6,7 @@ body {
 }
 
 // Images de la partie admin
-img {
-    width: 32px;
-    height: 32px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin: 0 10px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
-}
+
 
 // Liens de la partie admin
 a {
@@ -23,5 +16,42 @@ a {
 
 // Margin concernant les formulaires
 .margin-bottom-form {
-    height: 61.5px;
+    height: 81.5px;
 }
+
+.navbar-picture {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
+}
+
+.profil-picture {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
+}
+
+.location-picture {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
+.admin-user {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
+}
+
+#map { height: 180px; }

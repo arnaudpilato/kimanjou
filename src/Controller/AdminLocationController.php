@@ -32,8 +32,16 @@ class AdminLocationController extends AbstractController
             $locationPictureFile = $form->get('locationPicture')->getData();
 
             if ($locationPictureFile) {
-                $locationPictureFileName = $fileUploader->upload($locationPictureFile, 'location');
-                $location->setlocationPicture($locationPictureFileName);
+                $originalFileName = pathinfo($location->getName(), PATHINFO_FILENAME);
+                $modifyOriginalName = strtolower(str_replace(' ', '.', $originalFileName));
+                $newFileName = $modifyOriginalName.'.location.'.$locationPictureFile->guessExtension();
+
+                $locationPictureFile->move(
+                    $this->getParameter('location_pictures_directory'),
+                    $newFileName
+                );
+
+                $location->setLocationPicture($newFileName);
             }
 
             $locationRepository->add($location, true);

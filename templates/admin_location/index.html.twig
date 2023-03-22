@@ -28,7 +28,7 @@
                 {% for key, location in locations %}
                     <tr>
                         <th onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ key + 1 }}</th>
-                        <th onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'"><div><img src="{{ location.locationPicture != '' ?
+                        <th onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'"><div><img class="profile-picture" src="{{ location.locationPicture != '' ?
                                 asset('uploads/location_pictures/' ~ location.locationPicture) :
                                 asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image du lieu">
                             </div></th>

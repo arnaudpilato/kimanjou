@@ -21,7 +21,7 @@
                             <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
                         </li>
                         <li class="align-self-center mx-4 d-flex">
-                            <div><img src="{{ app.user.profilePicture != '' ?
+                            <div><img class="navbar-picture" src="{{ app.user.profilePicture != '' ?
                                 asset('uploads/profile_pictures/' ~ app.user.profilePicture) :
                                 asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image de profil"></div>
                             <div class="align-self-center">{{ app.user.nickName }}</div>

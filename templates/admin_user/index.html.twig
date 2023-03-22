@@ -8,6 +8,7 @@
 <div class="container">
     <h1 class="text-center my-4">Gestion des utilisateurs</h1>
     <div class="text-end my-3">
+        <a class="btn btn-primary" href="{{ path('app_register') }}">Ajouter</a>
         <a class="btn btn-danger" href="{{ path('app_admin_home') }}">Retour</a>
     </div>
     <table class="table table-hover">
@@ -27,7 +28,7 @@
             {% for key, user in users %}
                 <tr>
                     <th onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'">{{ key + 1 }}</th>
-                    <th onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'"><div><img src="{{ user.profilePicture != '' ?
+                    <th onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'"><div><img class="profil-picture" src="{{ user.profilePicture != '' ?
                             asset('uploads/profile_pictures/' ~ user.profilePicture) :
                             asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image de profil">
                         </div></th>

@@ -6,7 +6,7 @@ use App\Repository\LocationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LocationRepository::class)]
-#[ORM\Table(name: '`location`')]
+#[ORM\Table(name: 'location')]
 class Location
 {
     #[ORM\Id]

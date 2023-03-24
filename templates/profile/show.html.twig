@@ -8,25 +8,37 @@
         <div class="text-end my-3">
             <a class="btn btn-danger" href="{{ path('app_profile_edit', {'id': app.user.id}) }}">Modifier</a>
         </div>
-        <table class="table table-bordered">
-            <tbody>
-                <tr>
-                    <th>Nom</th>
-                    <td>{{ user.lastName }}</td>
-                </tr>
-                <tr>
-                    <th>Prénom</th>
-                    <td>{{ user.firstName }}</td>
-                </tr>
-                <tr>
-                    <th>Identifiant</th>
-                    <td>{{ user.nickName }}</td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td>{{ user.email }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="text-center">
+                    <img class="profile-picture-edit" src="{{ user.profilePicture != '' ?
+                    asset('uploads/profile_pictures/' ~ user.profilePicture) :
+                    asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image du Profil">
+                </div>
+
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ user.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prénom</th>
+                        <td>{{ user.firstName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Identifiant</th>
+                        <td>{{ user.nickName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
     </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 {{ form_start(locationForm) }}
     {{ form_widget(locationForm) }}
     <div class="text-center mt-5">
-        <button class="btn btn-secondary" type="submit" >Modifier</button>
+        <button class="btn btn-secondary" type="submit" >{{ button_label|default('Sauvegarder') }}</button>
     </div>
 {{ form_end(locationForm) }}

@@ -22,6 +22,40 @@ class AdminLocationController extends AbstractController
         ]);
     }
 
+    #[Route('/admin/location/new', name: 'app_admin_location_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, LocationRepository $locationRepository): Response
+    {
+        $location = new Location();
+        $form = $this->createForm(LocationType::class, $location);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $locationPictureFile = $form->get('locationPicture')->getData();
+
+            if ($locationPictureFile) {
+                $originalFileName = pathinfo($location->getName(), PATHINFO_FILENAME);
+                $modifyOriginalName = strtolower(str_replace(' ', '.', $originalFileName));
+                $newFileName = $modifyOriginalName.'.location.'.$locationPictureFile->guessExtension();
+
+                $locationPictureFile->move(
+                    $this->getParameter('location_pictures_directory'),
+                    $newFileName
+                );
+
+                $location->setLocationPicture($newFileName);
+            }
+
+            $locationRepository->add($location, true);
+
+            return $this->redirectToRoute('app_admin_location', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('admin_location/new.html.twig', [
+            'location' => $location,
+            'locationForm' => $form,
+        ]);
+    }
+
     #[Route('/admin/location/{id}/edit', name: 'app_admin_location_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Location $location, LocationRepository $locationRepository, FileUploader $fileUploader): Response
     {

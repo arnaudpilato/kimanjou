@@ -6,6 +6,7 @@
     <div class="container">
         <h1 class="text-center my-4">Gestion des Lieux</h1>
         <div class="text-end my-3">
+            <a class="btn btn-primary" href="{{ path('app_admin_location_new') }}">Ajouter</a>
             <a class="btn btn-danger" href="{{ path('app_admin_home') }}">Retour</a>
         </div>
         {% for flash_error in app.flashes('danger') %}
@@ -28,10 +29,13 @@
                 {% for key, location in locations %}
                     <tr>
                         <th onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ key + 1 }}</th>
-                        <th onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'"><div><img class="profile-picture" src="{{ location.locationPicture != '' ?
-                                asset('uploads/location_pictures/' ~ location.locationPicture) :
-                                asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image du lieu">
-                            </div></th>
+                        {% if location.locationPicture %}
+                            <th onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">
+                                <div><img class="location-picture" src="{{ asset('uploads/location_pictures/' ~ location.locationPicture) }}" alt="Image du lieu"></div>
+                            </th>
+                        {% else %}
+                            <th></th>
+                        {% endif %}
                         <td onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ location.name }}</td>
                         <td onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ location.address }}</td>
                         <td onclick="window.location='{{ path('app_admin_location_edit', {'id': location.id}) }}'">{{ location.postCode }}</td>

@@ -22,7 +22,7 @@
                     <tr>
                         <th class="align-middle d-flex">
                             <div>
-                                <img class="profil-picture" src="{{ user.profilePicture != '' ?
+                                <img class="profile-picture" src="{{ user.profilePicture != '' ?
                                 asset('uploads/profile_pictures/' ~ user.profilePicture) :
                                 asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image de profil">
                             </div>
@@ -43,7 +43,7 @@
         </table>
     </div>
 
-    <div id="map"></div>
+    <div id="mapDesactivate"></div>
     <script>
 
         const map = L.map('map').setView([51.505, -0.09], 13);

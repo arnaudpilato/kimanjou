@@ -26,7 +26,7 @@
                 <tr>
                     <th {{ (user.id == app.user.id) ? 'class="align-middle d-flex margin-bottom-form"' : 'class="align-middle d-flex"' }}>
                         <div>
-                            <img class="profil-picture" src="{{ user.profilePicture != '' ?
+                            <img class="profile-picture" src="{{ user.profilePicture != '' ?
                             asset('uploads/profile_pictures/' ~ user.profilePicture) :
                             asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image de profil">
                         </div>

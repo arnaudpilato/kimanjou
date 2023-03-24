@@ -1,6 +1,6 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}New Location{% endblock %}
 
 {% block form %}{% form_theme locationForm 'bootstrap_5_layout.html.twig' %}{% endblock %}
 
@@ -8,11 +8,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-5">
-                <h1 class="text-center my-5">Modification de {{ location.name }}</h1>
+                <h1 class="text-center my-5">Création d'un lieu</h1>
                 <div class="text-end my-3">
                     <a class="btn btn-danger" href="{{ path('app_admin_location') }}">Retour</a>
                 </div>
-                {{ include('admin_location/_form.html.twig', {'button_label': 'Modifier'}) }}
+                {{ include('admin_location/_form.html.twig', {'button_label': 'Ajouter'}) }}
             </div>
         </div>
     </div>

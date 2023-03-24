@@ -28,7 +28,7 @@
             {% for key, user in users %}
                 <tr>
                     <th onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'">{{ key + 1 }}</th>
-                    <th onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'"><div><img class="profil-picture" src="{{ user.profilePicture != '' ?
+                    <th onclick="window.location='{{ path('app_admin_user_edit', {'id': user.id}) }}'"><div><img class="profile-picture" src="{{ user.profilePicture != '' ?
                             asset('uploads/profile_pictures/' ~ user.profilePicture) :
                             asset('build/images/profile_picture.4e2b491b.png') }}" alt="Image de profil">
                         </div></th>

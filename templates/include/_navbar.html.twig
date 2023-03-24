@@ -9,7 +9,7 @@
                 <ul class="navbar-nav">
                     {% if app.user %}
                     <li class="nav-item">
-                        <a {% if route_name == "app_kimanjou" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ path('app_kimanjou') }}">Kimanjou</a>
+                        <a {% if route_name == "app_kimanjou_edit" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ path('app_kimanjou_edit', {'id': app.user.id}) }}">Kimanjou</a>
                     </li>
                     {% endif %}
                     {% if  is_granted("ROLE_ADMIN") %}

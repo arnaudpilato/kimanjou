@@ -6,7 +6,7 @@ use App\Repository\HistoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: HistoryRepository::class)]
-#[ORM\Table(name: '`history`')]
+#[ORM\Table(name: 'history')]
 class History
 {
     #[ORM\Id]
